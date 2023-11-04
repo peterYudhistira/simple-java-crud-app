@@ -1,12 +1,15 @@
 import java.util.List;
 import java.util.Scanner;
 
+import daos.MahasiswaBIN;
 import daos.MahasiswaTXT;
 import models.Mahasiswa;
 
 public class App {
     public static void main(String[] args) throws Exception {
         MahasiswaTXT mahasiswaTXT = new MahasiswaTXT();
+        MahasiswaBIN mahasiswaBIN = new MahasiswaBIN();
+        String fileType = "txt";
         int choice;
 
         while (true) {
@@ -14,15 +17,40 @@ public class App {
 
             if (choice == 1) {
                 Mahasiswa mahasiswa = create();
-                mahasiswaTXT.create(mahasiswa);
+                if (fileType.equals("txt")) {
+                    mahasiswaTXT.create(mahasiswa);
+                } else {
+                    mahasiswaBIN.create(mahasiswa);
+                }
             } else if (choice == 2) {
-                read(mahasiswaTXT.read());
+                if (fileType.equals("txt")) {
+                    read(mahasiswaTXT.read());
+                } else {
+                    read(mahasiswaBIN.read());
+                }
+
             } else if (choice == 3) {
                 Mahasiswa mahasiswa = create();
-                mahasiswaTXT.update(mahasiswa, mahasiswa.getNrp());
+                if (fileType.equals("txt")) {
+                    mahasiswaTXT.update(mahasiswa, mahasiswa.getNrp());
+                } else {
+                    mahasiswaBIN.update(mahasiswa, mahasiswa.getNrp());
+                }
             } else if (choice == 4) {
                 String nrp = delete();
-                mahasiswaTXT.delete(nrp);
+                if (fileType.equals("txt")) {
+                    mahasiswaTXT.delete(nrp);
+                } else {
+                    mahasiswaBIN.delete(nrp);
+                }
+            } else if (choice == 5) {
+                if (fileType.equals("ser")) {
+                    fileType.equals("txt");
+                    System.out.println("File is now mahasiswa.txt");
+                } else {
+                    fileType = "ser";
+                    System.out.println("File is now mahasiswa.ser");
+                }
             } else if (choice == 0) {
                 break;
             } else {
@@ -37,6 +65,7 @@ public class App {
         System.out.println("2. Read");
         System.out.println("3. Update");
         System.out.println("4. Delete");
+        System.out.println("5. Switch file");
         System.out.println("0. Bye");
         return input.nextInt();
     }

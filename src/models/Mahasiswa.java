@@ -1,6 +1,8 @@
 package models;
 
-public class Mahasiswa {
+import java.io.Serializable;
+
+public class Mahasiswa implements Serializable{
     // data members
     String nrp;
     String nama;

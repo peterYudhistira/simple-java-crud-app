@@ -5,7 +5,7 @@ C14190065
 Yunus Marsetio
 L
 C14190068
-Daniel Leonard Palagan
+Frans Wijaya
 L
 C14190070
 Kendrew Tandio
@@ -16,3 +16,6 @@ L
 C14190001
 Michael A
 L
+C14190072
+Udinah
+P
