@@ -1,12 +1,14 @@
 import java.util.List;
 import java.util.Scanner;
 
+import daos.MahasiswaBIN;
 import daos.MahasiswaTXT;
 import models.Mahasiswa;
 
 public class App {
     public static void main(String[] args) throws Exception {
         MahasiswaTXT mahasiswaTXT = new MahasiswaTXT();
+        MahasiswaBIN mahasiswaBIN = new MahasiswaBIN();
         int choice;
 
         while (true) {
@@ -14,9 +16,10 @@ public class App {
 
             if (choice == 1) {
                 Mahasiswa mahasiswa = create();
-                mahasiswaTXT.create(mahasiswa);
+                mahasiswaBIN.create(mahasiswa);
+                // mahasiswaTXT.create(mahasiswa);
             } else if (choice == 2) {
-                read(mahasiswaTXT.read());
+                read(mahasiswaBIN.read());
             } else if (choice == 3) {
                 Mahasiswa mahasiswa = create();
                 mahasiswaTXT.update(mahasiswa, mahasiswa.getNrp());
@@ -66,8 +69,6 @@ public class App {
         Scanner input = new Scanner(System.in);
         System.out.print("NRP : ");
         String nrp = input.nextLine();
-        input.nextLine();
-
         return nrp;
     }
 
