@@ -4,59 +4,11 @@ import java.util.Scanner;
 import daos.MahasiswaBIN;
 import daos.MahasiswaTXT;
 import models.Mahasiswa;
+import views.mainmenuwindow.MainMenu;
 
 public class App {
-    public static void main(String[] args) throws Exception {
-        MahasiswaTXT mahasiswaTXT = new MahasiswaTXT();
-        MahasiswaBIN mahasiswaBIN = new MahasiswaBIN();
-        String fileType = "txt";
-        int choice;
-
-        while (true) {
-            choice = menu();
-
-            if (choice == 1) {
-                Mahasiswa mahasiswa = create();
-                if (fileType.equals("txt")) {
-                    mahasiswaTXT.create(mahasiswa);
-                } else {
-                    mahasiswaBIN.create(mahasiswa);
-                }
-            } else if (choice == 2) {
-                if (fileType.equals("txt")) {
-                    read(mahasiswaTXT.read());
-                } else {
-                    read(mahasiswaBIN.read());
-                }
-
-            } else if (choice == 3) {
-                Mahasiswa mahasiswa = create();
-                if (fileType.equals("txt")) {
-                    mahasiswaTXT.update(mahasiswa, mahasiswa.getNrp());
-                } else {
-                    mahasiswaBIN.update(mahasiswa, mahasiswa.getNrp());
-                }
-            } else if (choice == 4) {
-                String nrp = delete();
-                if (fileType.equals("txt")) {
-                    mahasiswaTXT.delete(nrp);
-                } else {
-                    mahasiswaBIN.delete(nrp);
-                }
-            } else if (choice == 5) {
-                if (fileType.equals("ser")) {
-                    fileType.equals("txt");
-                    System.out.println("File is now mahasiswa.txt");
-                } else {
-                    fileType = "ser";
-                    System.out.println("File is now mahasiswa.ser");
-                }
-            } else if (choice == 0) {
-                break;
-            } else {
-                System.out.println("SALAH");
-            }
-        }
+    public static void main(String[] args){
+        MainMenu mainMenu = new MainMenu();
     }
 
     public static int menu() {
